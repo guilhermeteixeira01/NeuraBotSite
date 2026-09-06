@@ -4,20 +4,548 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neura Bot</title>
-  <meta name="description" content="Venha explorar o mundo dos bots com o Neura Bot!" />
-  <link rel="icon" type="image/x-icon" href="/assets/favicon-BB9iMU1l.ico">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16-DwnstBHd.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-BB9iMU1l.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon-C1YDZKwK.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/android-chrome-192x192-DHKN3hJ9.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="/assets/android-chrome-512x512-8Glw-bac.png">
-  <script type="module" crossorigin src="/assets/index-DVac8bnt.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-Bf4evSLb.css">
+  <link rel="icon" type="image/x-icon" href="../imgs/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="../imgs/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../imgs/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../imgs/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="../imgs/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../imgs/android-chrome-512x512.png">
+  <title>Erro — Neurabot</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Sora:wght@300;400;600;700&display=swap"
+    rel="stylesheet" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Sora:wght@300;400;600;700&display=swap');
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: #07070f;
+      color: #fff;
+      font-family: 'Sora', 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column
+    }
+
+    ::-webkit-scrollbar {
+      width: 6px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0a0a14
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #00d4ff44;
+      border-radius: 3px
+    }
+
+    /* ── Grid bg ── */
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: grid-fade 1.2s ease forwards
+    }
+
+    @keyframes grid-fade {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    /* ── Glow orbs ── */
+    .glow-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0
+    }
+
+    .glow-orb-1 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #00d4ff18, transparent 70%);
+      top: -100px;
+      left: -100px
+    }
+
+    .glow-orb-2 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, #0088ff12, transparent 70%);
+      bottom: -60px;
+      right: -60px
+    }
+
+    /* ── Scan line ── */
+    .scan-line {
+      position: fixed;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #00d4ff33, transparent);
+      z-index: 1;
+      pointer-events: none;
+      animation: scan 6s linear infinite
+    }
+
+    @keyframes scan {
+      0% {
+        top: -10%
+      }
+
+      100% {
+        top: 110%
+      }
+    }
+
+    /* ── Layout ── */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px
+    }
+
+    /* ── Navbar ── */
+    nav {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      border-bottom: 1px solid #00d4ff0f
+    }
+
+    .nav-logo {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: 2px;
+      color: #fff;
+      text-decoration: none
+    }
+
+    .nav-logo span {
+      color: #00d4ff
+    }
+
+    /* ── Main error section ── */
+    .error-section {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      text-align: center
+    }
+
+    .error-inner {
+      max-width: 640px;
+      width: 100%;
+      animation: fadeUp 0.7s ease both
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    /* ── Big code ── */
+    .error-code {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: clamp(100px, 20vw, 180px);
+      line-height: 1;
+      letter-spacing: -4px;
+      background: linear-gradient(135deg, #00d4ff, #0088ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      position: relative;
+      display: inline-block
+    }
+
+    .error-code::after {
+      content: attr(data-code);
+      position: absolute;
+      inset: 0;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: inherit;
+      line-height: 1;
+      letter-spacing: -4px;
+      -webkit-text-fill-color: transparent;
+      background: linear-gradient(135deg, #00d4ff22, #0088ff11);
+      -webkit-background-clip: text;
+      background-clip: text;
+      filter: blur(20px);
+      z-index: -1;
+      transform: translateY(8px)
+    }
+
+    /* ── Badge ── */
+    .error-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #00d4ff0d;
+      border: 1px solid #00d4ff22;
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #00d4ff;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 24px
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #00d4ff;
+      animation: blink 1.4s ease-in-out infinite
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0
+      }
+    }
+
+    /* ── Title & desc ── */
+    .error-title {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: clamp(22px, 5vw, 36px);
+      color: #fff;
+      margin: 16px 0 12px;
+      letter-spacing: 1px
+    }
+
+    .error-desc {
+      font-size: 15px;
+      color: #8888aa;
+      line-height: 1.8;
+      margin-bottom: 36px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto
+    }
+
+    /* ── Buttons ── */
+    .error-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #00d4ff, #0088ff);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 32px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Sora', sans-serif;
+      transition: all 0.2s;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      text-align: center
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px #00d4ff44
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: #00d4ff;
+      border: 1px solid #00d4ff55;
+      border-radius: 8px;
+      padding: 13px 28px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Sora', sans-serif;
+      transition: all 0.2s;
+      text-decoration: none;
+      text-align: center
+    }
+
+    .btn-outline:hover {
+      background: #00d4ff11;
+      border-color: #00d4ff
+    }
+
+    /* ── Decorative divider ── */
+    .error-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 48px auto 32px;
+      max-width: 400px;
+      opacity: .4
+    }
+
+    .error-divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #00d4ff55)
+    }
+
+    .error-divider-line.r {
+      background: linear-gradient(90deg, #00d4ff55, transparent)
+    }
+
+    .error-divider span {
+      font-size: 11px;
+      color: #00d4ff;
+      letter-spacing: 2px;
+      font-family: 'Orbitron', sans-serif;
+      white-space: nowrap
+    }
+
+    /* ── Links rápidos ── */
+    .quick-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap
+    }
+
+    .quick-link {
+      color: #8888aa;
+      text-decoration: none;
+      font-size: 13px;
+      transition: color .2s;
+      display: flex;
+      align-items: center;
+      gap: 6px
+    }
+
+    .quick-link svg {
+      width: 14px;
+      height: 14px;
+      opacity: .6
+    }
+
+    .quick-link:hover {
+      color: #00d4ff
+    }
+
+    /* ── Footer ── */
+    footer {
+      position: relative;
+      z-index: 2;
+      padding: 20px 40px;
+      border-top: 1px solid #00d4ff0f;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: #444466
+    }
+
+    .footer-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #444466
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #ffe600
+    }
+
+    /* ── Responsivo ── */
+    @media(max-width:768px) {
+      nav {
+        padding: 14px 20px
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px
+      }
+
+      .error-buttons {
+        flex-direction: column;
+        align-items: center
+      }
+
+      .btn-primary,
+      .btn-outline {
+        width: 100%;
+        max-width: 320px;
+        justify-content: center
+      }
+
+      .glow-orb,
+      .grid-bg,
+      .scan-line {
+        display: none !important
+      }
+    }
+
+    @media(hover:none) {
+
+      .btn-primary:hover,
+      .btn-outline:hover {
+        transform: none;
+        box-shadow: none
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <div id="root"></div>
+
+  <div class="grid-bg deco"></div>
+  <div class="glow-orb glow-orb-1 deco"></div>
+  <div class="glow-orb glow-orb-2 deco"></div>
+  <div class="scan-line deco"></div>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="/" class="nav-logo">NEURA<span>BOT</span></a>
+  </nav>
+
+  <!-- Conteúdo de erro -->
+  <section class="error-section">
+    <div class="error-inner">
+
+      <div class="error-badge">
+        <span class="badge-dot"></span>
+        Página não encontrada
+      </div>
+
+      <div class="error-code" data-code="404">404</div>
+
+      <h1 class="error-title">Oops! Rota desconhecida</h1>
+      <p class="error-desc">
+        A página que você está procurando não existe, foi movida ou está temporariamente indisponível.
+        Verifique o endereço ou volte para o início.
+      </p>
+
+      <div class="error-buttons">
+        <a href="/" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 12L12 3l9 9" />
+            <path d="M9 21V12h6v9" />
+          </svg>
+          Voltar ao início
+        </a>
+        <!-- <a href="/suporte" class="btn-outline">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Suporte
+        </a> -->
+      </div>
+
+      <div class="error-divider">
+        <div class="error-divider-line"></div>
+        <span>LINKS RÁPIDOS</span>
+        <div class="error-divider-line r"></div>
+      </div>
+
+      <!--     <div class="quick-links">
+        <a href="/bots" class="quick-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Nossos Bots
+        </a>
+        <a href="/planos" class="quick-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          Planos
+        </a>
+        <a href="/docs" class="quick-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Documentação
+        </a>
+        <a href="/status" class="quick-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Status
+        </a>
+      </div> -->
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <span class="footer-copy">© 2025 Neurabot. Todos os direitos reservados.</span>
+    <div class="footer-status">
+      <span class="status-dot"></span>
+      Todos os sistemas operacionais
+    </div>
+  </footer>
+
 </body>
 
 </html>
