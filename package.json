@@ -1,0 +1,20 @@
+{
+  "name": "neurabot-root",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix NeuraBot\" \"npm run dev --prefix DashBoard\" \"npm run dev --prefix GerarEmbed\"",
+    "dev:site": "npm run dev --prefix NeuraBot",
+    "dev:dashboard": "npm run dev --prefix DashBoard",
+    "dev:embed": "npm run dev --prefix GerarEmbed",
+    "build": "npm run build --prefix NeuraBot && npm run build --prefix DashBoard && npm run build --prefix GerarEmbed",
+    "predeploy": "npm run build && node deploy-prep.mjs",
+    "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0",
+    "gh-pages": "^6.0.0"
+  },
+  "dependencies": {
+    "vite": "^8.0.13"
+  }
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NeuraBot Docs</title>
+  <link rel="shortcut icon" href="./public/imgs/logoo.png" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Framer Motion não funciona direto em HTML puro -->
+</head>
+
+<body class="min-h-screen bg-zinc-950 text-zinc-100 p-6 md:p-10">
+
+  <div class="max-w-5xl mx-auto space-y-10">
+
+    <!-- Header -->
+    <div class="space-y-3 animate-fade-in">
+      <h1 class="text-4xl md:text-5xl font-bold">
+        Documentação do NeuraBot
+      </h1>
+
+      <p class="text-zinc-400 text-lg">
+        Guia completo de uso, estrutura e funcionalidades do sistema NeuraBot.
+      </p>
+    </div>
+
+    <!-- Visão Geral -->
+    <div class="bg-zinc-900 rounded-lg">
+      <div class="p-6 space-y-3">
+        <h2 class="text-2xl font-semibold">Visão Geral</h2>
+        <p class="text-zinc-300">
+          O NeuraBot é uma plataforma desenvolvida para automação inteligente,
+          integração de serviços e gerenciamento de processos digitais de forma
+          simplificada e escalável.
+        </p>
+      </div>
+    </div>
+
+    <!-- Funcionalidades -->
+    <div class="bg-zinc-900 rounded-lg">
+      <div class="p-6 space-y-3">
+        <h2 class="text-2xl font-semibold">Funcionalidades</h2>
+
+        <ul class="list-disc pl-6 text-zinc-300 space-y-1">
+          <li>Automação de processos inteligentes</li>
+          <li>Integração com APIs externas</li>
+          <li>Painel administrativo moderno</li>
+          <li>Gerenciamento de usuários e permissões</li>
+          <li>Escalabilidade para múltiplos serviços</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Estrutura -->
+    <div class="bg-zinc-900 rounded-lg">
+      <div class="p-6 space-y-3">
+        <h2 class="text-2xl font-semibold">Estrutura do Sistema</h2>
+        <p class="text-zinc-300">
+          O sistema é organizado em módulos independentes para facilitar manutenção
+          e expansão. Cada módulo é responsável por uma área específica do sistema,
+          como autenticação, automação e integração.
+        </p>
+      </div>
+    </div>
+
+    <!-- API -->
+    <div class="bg-zinc-900 rounded-lg">
+      <div class="p-6 space-y-3">
+        <h2 class="text-2xl font-semibold">Integrações e API</h2>
+
+        <p class="text-zinc-300">
+          O NeuraBot suporta integração via API REST, permitindo comunicação com
+          sistemas externos de forma segura e eficiente.
+        </p>
+
+        <div class="bg-zinc-800 p-4 rounded-lg text-sm text-zinc-400 font-mono">
+          GET /api/status<br />
+          POST /api/auth/login<br />
+          GET /api/users
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="text-center text-zinc-500 text-sm pt-10">
+      © <span id="year"></span> NeuraBot. Todos os direitos reservados.
+    </div>
+
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,465 @@
+/* src/pages/NotificationsPage.css */
+/* Design system: Orbitron + Sora · #07070f · #00d4ff / #0088ff */
+
+.broadcast-box {
+  background: rgba(10, 10, 22, 0.92);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  border-radius: 18px;
+  padding: 20px;
+  /* backdrop-filter removido: causa artefatos visuais (linhas/glitch)
+     em WebKit mobile quando combinado com overflow scroll interno */
+  transition: border-color 0.18s ease;
+  box-sizing: border-box;
+  overflow: hidden;
+  max-width: 100%;
+  isolation: isolate;
+}
+
+.broadcast-box:hover {
+  border-color: rgba(0, 212, 255, 0.18);
+}
+
+.broadcast-box h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  margin-bottom: 14px;
+  color: #fff;
+  text-shadow: 0 0 12px rgba(0, 212, 255, 0.25);
+}
+
+/* ── Textarea ── */
+.txt {
+  width: 100%;
+  min-height: 110px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: #fff;
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  box-sizing: border-box;
+}
+
+.txt:focus {
+  border-color: rgba(0, 212, 255, 0.45);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+}
+
+.txt::placeholder {
+  color: #8888aa;
+}
+
+/* ── Field input ── */
+.field-input {
+  flex: 1;
+  min-width: 0;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  border-radius: 12px;
+  padding: 11px 14px;
+  color: #fff;
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.field-input:focus {
+  border-color: rgba(0, 212, 255, 0.45);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+}
+
+.field-input::placeholder {
+  color: #8888aa;
+}
+
+/* ── Select de servidor ── */
+.notif-select-wrap {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.notif-select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 212, 255, 0.12);
+  border-radius: 12px;
+  padding: 11px 14px;
+  color: #fff;
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.notif-select:focus {
+  border-color: rgba(0, 212, 255, 0.45);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+}
+
+.notif-select option {
+  background: #0a0a14;
+  color: #fff;
+}
+
+/* ── Meta da assinatura selecionada ── */
+.notif-meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #8888aa;
+  font-family: 'Sora', monospace;
+  background: rgba(0, 212, 255, 0.04);
+  border: 1px solid rgba(0, 212, 255, 0.08);
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+}
+
+.notif-meta strong {
+  color: rgba(0, 212, 255, 0.7);
+}
+
+/* ══════════════════════════════════════
+   DISCORD SYNC — visível só para clientes
+   ══════════════════════════════════════ */
+
+/* Header da seção */
+.dc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.dc-timestamp {
+  font-size: 11px;
+  color: var(--text3, #8888aa);
+  font-family: 'Sora', monospace;
+}
+
+/* Resumo 4 stats */
+.dc-summary {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.dc-stat {
+  flex: 1;
+  min-width: 64px;
+  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  border-radius: 12px;
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.dc-stat-val {
+  display: block;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #00d4ff;
+}
+
+.dc-stat-label {
+  display: block;
+  font-family: 'Sora', sans-serif;
+  font-size: 10px;
+  color: #8888aa;
+  margin-top: 2px;
+  letter-spacing: 0.5px;
+}
+
+/* Tabs */
+.dc-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.dc-tab {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 212, 255, 0.1);
+  border-radius: 8px;
+  padding: 7px 14px;
+  color: #8888aa;
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.dc-tab:hover {
+  border-color: rgba(0, 212, 255, 0.3);
+  color: #ccc;
+}
+
+.dc-tab.active {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.4);
+  color: #00d4ff;
+}
+
+/* Campo de busca */
+.dc-search {
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+/* Lista de itens */
+.dc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 320px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  /* Força layer GPU própria — evita artefatos de compositing no scroll */
+  transform: translateZ(0);
+  -webkit-overflow-scrolling: touch;
+}
+
+.dc-list::-webkit-scrollbar {
+  width: 4px;
+}
+
+.dc-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dc-list::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.2);
+  border-radius: 4px;
+}
+
+/* Item individual */
+.dc-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 10px;
+  transition: border-color 0.12s;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-shrink: 0;
+  /* Garante que o texto não vaze */
+  word-break: break-word;
+}
+
+/* Canal de categoria (tipo 4) — visual diferenciado */
+.dc-item.dc-item--category {
+  background: transparent;
+  border-color: transparent;
+  padding: 6px 4px 2px;
+  margin-top: 6px;
+}
+
+.dc-item.dc-item--category .dc-item-name {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8888aa;
+}
+
+.dc-item:hover {
+  border-color: rgba(0, 212, 255, 0.15);
+}
+
+.dc-item-icon {
+  font-size: 13px;
+  width: 18px;
+  min-width: 18px;
+  text-align: center;
+  flex-shrink: 0;
+  color: #8888aa;
+}
+
+.dc-item-name {
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  color: #e0e0f0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  flex: 1;
+  max-width: 100%;
+}
+
+.dc-item-meta {
+  font-family: 'Sora', monospace;
+  font-size: 11px;
+  color: #8888aa;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+  flex-shrink: 0;
+}
+
+.dc-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.dc-item-info .dc-item-name {
+  flex: none;
+  width: 100%;
+}
+
+.dc-item-info .dc-item-meta {
+  max-width: 100%;
+  width: 100%;
+}
+
+/* Avatar de membro */
+.dc-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  flex-shrink: 0;
+}
+
+/* Badges de cargo no membro */
+.dc-roles-wrap {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 140px;
+  flex-shrink: 0;
+}
+
+.dc-role-badge {
+  font-family: 'Sora', sans-serif;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 6px;
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  color: rgba(0, 212, 255, 0.7);
+  white-space: nowrap;
+}
+
+/* Bolinha de cor do cargo */
+.dc-role-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Empty state */
+.dc-empty {
+  font-size: 13px;
+  color: #8888aa;
+  margin-top: 10px;
+  font-family: 'Sora', sans-serif;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .broadcast-box {
+    padding: 14px;
+    /* Sem backdrop-filter em mobile — causa glitch em Android WebView */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .broadcast-box h3 {
+    font-size: 12px;
+  }
+
+  .dc-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .dc-summary {
+    gap: 6px;
+  }
+
+  .dc-stat-val {
+    font-size: 15px;
+  }
+
+  .dc-tab {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+
+  .dc-roles-wrap {
+    max-width: 80px;
+    gap: 3px;
+  }
+
+  .dc-role-badge {
+    font-size: 9px;
+    padding: 2px 5px;
+  }
+
+  .dc-avatar {
+    width: 24px;
+    height: 24px;
+  }
+
+  .dc-list {
+    max-height: 360px;
+    height: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* Scroll momentum nativo iOS */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .dc-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .dc-item {
+    min-height: 40px;
+  }
+
+  .dc-item-meta {
+    max-width: 90px;
+  }
+
+  .dc-roles-wrap {
+    max-width: 70px;
+  }
+
+}

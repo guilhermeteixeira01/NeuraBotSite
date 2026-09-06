@@ -1,0 +1,88 @@
+/* src/components/Topbar.css */
+/* Design system: Space Grotesk + IBM Plex Mono + Sora · #05060a · #3fd8ff / #1a8fd1 */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@300;400;600;700&display=swap');
+
+.topbar {
+  padding: 20px 28px;
+  border-bottom: 1px solid rgba(63, 216, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(5, 6, 10, 0.95);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  gap: 12px;
+  backdrop-filter: blur(12px);
+}
+
+.topbar-left h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 0 0 16px rgba(63, 216, 255, 0.3);
+}
+
+.topbar-left p {
+  font-size: 12px;
+  color: #6b7690;
+  margin-top: 2px;
+  font-family: 'Sora', sans-serif;
+}
+
+.topbar-right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ── Hamburger toggle (mobile only) ── */
+.menu-toggle {
+  display: none;
+  margin-bottom: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(63, 216, 255, 0.06);
+  border: 1px solid rgba(63, 216, 255, 0.15);
+  color: #3fd8ff;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.menu-toggle:hover {
+  background: rgba(63, 216, 255, 0.12);
+  box-shadow: 0 0 12px rgba(63, 216, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  .topbar {
+    padding: 14px 16px;
+  }
+
+  .topbar-left h1 {
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+
+  .topbar-left p {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar-right .btn span {
+    display: none;
+  }
+}
