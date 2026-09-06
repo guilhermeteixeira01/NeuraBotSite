@@ -169,6 +169,7 @@ Please change the parent <Route path="${f}"> to <Route path="${f==="/"?"*":`${f}
 
         @media (max-width: 768px) {
           .core3d-scene { max-width: 240px; }
+          .core3d-core img { width: 130%; height: 140%; left: -18px; }
         }
         @media (prefers-reduced-motion: reduce) {
           .core3d-autospin { animation: none; }
