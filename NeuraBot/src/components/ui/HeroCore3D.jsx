@@ -1,144 +1,170 @@
-import { useRef, useEffect } from "react";
+import { Suspense, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useGLTF } from "@react-three/drei";
+import * as THREE from "three";
+
+const MODEL_URL = "/models/Brain.glb";
 
 /**
- * Núcleo 3D interativo construído só com transforms CSS reais (preserve-3d),
- * sem dependência de three.js. Três anéis em planos diferentes formam uma
- * espécie de giroscópio; o conjunto inclina de acordo com a posição do mouse
- * NA PÁGINA INTEIRA (não só quando o cursor está em cima dele) e gira sozinho
- * continuamente.
+ * Malha do cérebro com um "rim glow" holográfico: um clone levemente maior,
+ * renderizado só pelo lado de dentro (BackSide) com blending aditivo, cria o
+ * efeito de brilho na borda sem precisar de shader customizado.
  */
-export default function HeroCore3D({ image, imageAlt = "" }) {
-  const rigRef = useRef(null);
-  const target = useRef({ x: 0, y: 0 });
-  const current = useRef({ x: 0, y: 0 });
-  const rafId = useRef(null);
+function BrainMesh() {
+  const { nodes } = useGLTF(MODEL_URL);
+  const meshData = Object.values(nodes).find((n) => n.isMesh);
 
-  useEffect(() => {
-    function handleMove(e) {
-      const px = e.clientX / window.innerWidth - 0.5;
-      const py = e.clientY / window.innerHeight - 0.5;
-      target.current = { x: py * -18, y: px * 30 };
+  return (
+    <group>
+      {/* Casca sólida, escura, levemente metálica */}
+      <mesh geometry={meshData.geometry} castShadow receiveShadow>
+        <meshStandardMaterial
+          color="#0c1420"
+          emissive="#0e4a5c"
+          emissiveIntensity={0.45}
+          roughness={0.35}
+          metalness={0.6}
+        />
+      </mesh>
+
+      {/* Rim glow — clone 4% maior, só face de trás, aditivo */}
+      <mesh geometry={meshData.geometry} scale={1.04}>
+        <meshBasicMaterial
+          color="#3fd8ff"
+          side={THREE.BackSide}
+          transparent
+          opacity={0.65}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+        />
+      </mesh>
+
+      {/* Segunda casca, bem maior e mais fraca — simula o halo suave que o Bloom faria */}
+      <mesh geometry={meshData.geometry} scale={1.12}>
+        <meshBasicMaterial
+          color="#3fd8ff"
+          side={THREE.BackSide}
+          transparent
+          opacity={0.18}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+        />
+      </mesh>
+    </group>
+  );
+}
+
+/** Um anel fino orbitando em um plano específico — equivalente 3D dos antigos .core3d-ring */
+function OrbitRing({ radius, rotation, color, speed, opacity = 0.5 }) {
+  const ref = useRef(null);
+  useFrame((_, delta) => {
+    if (ref.current) ref.current.rotation.z += delta * speed;
+  });
+
+  return (
+    <group rotation={rotation}>
+      <mesh ref={ref}>
+        <torusGeometry args={[radius, 0.006, 8, 96]} />
+        <meshBasicMaterial
+          color={color}
+          transparent
+          opacity={opacity}
+          blending={THREE.AdditiveBlending}
+        />
+      </mesh>
+    </group>
+  );
+}
+
+/** Pequenos pontos brilhantes presos ao longo de uma órbita — "nós" de dados */
+function OrbitNode({ radius, rotation, speed, offset = 0, color = "#3fd8ff" }) {
+  const ref = useRef(null);
+  useFrame(({ clock }) => {
+    const t = clock.getElapsedTime() * speed + offset;
+    if (ref.current) {
+      ref.current.position.set(Math.cos(t) * radius, Math.sin(t) * radius, 0);
     }
+  });
 
-    function handleLeave() {
-      target.current = { x: 0, y: 0 };
-    }
+  return (
+    <group rotation={rotation}>
+      <mesh ref={ref}>
+        <sphereGeometry args={[0.022, 12, 12]} />
+        <meshBasicMaterial color={color} />
+        <pointLight color={color} intensity={0.6} distance={0.6} />
+      </mesh>
+    </group>
+  );
+}
 
-    function tick() {
-      // easing suave até o valor alvo, pra não "travar" no ponto do mouse
-      current.current.x += (target.current.x - current.current.x) * 0.06;
-      current.current.y += (target.current.y - current.current.y) * 0.06;
+/** Grupo raiz: giro automático horizontal (em torno do eixo vertical, "em pé"),
+ * separado por completo da pose fixa de repouso. O grupo mais externo SÓ tem
+ * rotation.y — nunca mistura com tilt/roll — então o giro nunca pode ficar
+ * torto, não importa a inclinação usada por dentro pra pose. */
+function Rig() {
+  const spinRef = useRef(null);
+  const autoSpin = useRef(0);
 
-      if (rigRef.current) {
-        rigRef.current.style.transform =
-          `rotateX(${current.current.x.toFixed(2)}deg) rotateY(${current.current.y.toFixed(2)}deg)`;
-      }
-      rafId.current = requestAnimationFrame(tick);
-    }
+  useFrame((_, delta) => {
+    autoSpin.current += delta * 0.12;
+    if (spinRef.current) spinRef.current.rotation.y = autoSpin.current;
+  });
 
-    window.addEventListener("mousemove", handleMove, { passive: true });
-    document.addEventListener("mouseleave", handleLeave);
-    rafId.current = requestAnimationFrame(tick);
+  return (
+    <group ref={spinRef}>
+      {/* Pose fixa de repouso: de perfil, "em pé", tronco cerebral pra baixo. Nunca muda. */}
+      <group rotation={[0, 0, -Math.PI * (70 / 180)]}>
+        <group rotation={[-Math.PI * (25 / 180), -Math.PI / 2, 0]}>
+          <group scale={0.75}>
+            <BrainMesh />
+          </group>
+          <OrbitRing radius={1.25} rotation={[Math.PI / 2 + 0.12, 0.2, 0]} color="#3fd8ff" speed={0.2} opacity={0.5} />
+          <OrbitRing radius={1.45} rotation={[0.5, 0.9, 0.3]} color="#8b7bff" speed={-0.14} opacity={0.32} />
 
-    return () => {
-      window.removeEventListener("mousemove", handleMove);
-      document.removeEventListener("mouseleave", handleLeave);
-      cancelAnimationFrame(rafId.current);
-    };
-  }, []);
+          <OrbitNode radius={1.25} rotation={[Math.PI / 2 + 0.12, 0.2, 0]} speed={0.2} offset={0.4} />
+          <OrbitNode radius={1.45} rotation={[0.5, 0.9, 0.3]} speed={-0.14} offset={2.6} color="#8b7bff" />
+        </group>
+      </group>
+    </group>
+  );
+}
 
+export default function HeroCore3D() {
   return (
     <div className="core3d-scene">
       <style>{`
         .core3d-scene {
           position: relative;
           width: 100%;
-          max-width: 380px;
+          max-width: 460px;
           aspect-ratio: 1;
           margin: 0 auto;
-          perspective: 1200px;
         }
-        .core3d-rig {
-          position: absolute;
-          inset: 0;
-          transform-style: preserve-3d;
-          will-change: transform;
+        .core3d-scene canvas {
+          outline: none;
+          filter: drop-shadow(0 0 22px rgba(63,216,255,0.35)) drop-shadow(0 0 50px rgba(139,123,255,0.15));
         }
-        .core3d-autospin {
-          position: absolute;
-          inset: 0;
-          transform-style: preserve-3d;
-          animation: coreDrift 16s linear infinite;
-        }
-        .core3d-ring {
-          position: absolute;
-          inset: 6%;
-          border-radius: 50%;
-          border: 1px solid var(--cyan-soft);
-          transform-style: preserve-3d;
-        }
-        .core3d-ring.r1 { transform: rotateX(72deg); border-color: rgba(63,216,255,0.55); }
-        .core3d-ring.r2 { transform: rotateX(20deg) rotateY(60deg); border-color: rgba(139,123,255,0.4); }
-        .core3d-ring.r3 { inset: 16%; transform: rotateX(50deg) rotateY(-40deg); border-color: rgba(63,216,255,0.25); }
-
-        .core3d-node {
-          position: absolute;
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-          background: var(--cyan);
-          box-shadow: 0 0 10px 2px var(--cyan-soft);
-        }
-
-        .core3d-core {
-          position: absolute;
-          inset: 30%;
-          border-radius: 50%;
-          background: radial-gradient(circle at 38% 32%, rgba(63,216,255,0.16), rgba(5,6,10,0.9) 70%);
-          border: 1px solid var(--line-strong);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          backdrop-filter: blur(4px);
-          box-shadow: 0 0 60px rgba(63,216,255,0.15), inset 0 0 30px rgba(0,0,0,0.5);
-        }
-        .core3d-core img {
-          position: absolute;
-          width: 120%;
-          height: 120%;
-          left: -20px;
-          object-fit: contain;
-          filter: drop-shadow(0 0 20px rgba(63,216,255,0.45));
-          animation: float 5s ease-in-out infinite;
-        }
-
-        @keyframes coreDrift {
-          from { transform: rotateY(0deg); }
-          to { transform: rotateY(360deg); }
-        }
-
         @media (max-width: 768px) {
-          .core3d-scene { max-width: 240px; }
-          .core3d-core img { width: 130%; height: 140%; left: -18px; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .core3d-autospin { animation: none; }
+          .core3d-scene { max-width: 300px; }
         }
       `}</style>
 
-      <div ref={rigRef} className="core3d-rig">
-        <div className="core3d-autospin">
-          <div className="core3d-ring r1" />
-          <div className="core3d-ring r2" />
-          <div className="core3d-ring r3" />
-          <div className="core3d-node" style={{ top: "6%", left: "50%" }} />
-          <div className="core3d-node" style={{ bottom: "8%", right: "18%" }} />
-          <div className="core3d-node" style={{ top: "40%", left: "4%" }} />
-        </div>
-        <div className="core3d-core">
-          {image && <img src={image} alt={imageAlt} />}
-        </div>
-      </div>
+      <Canvas
+        camera={{ position: [0, 0, 4.3], fov: 40 }}
+        dpr={[1, 1.75]}
+        gl={{ antialias: true, alpha: true }}
+        onCreated={({ gl }) => gl.setClearAlpha(0)}
+      >
+        <ambientLight intensity={0.4} />
+        <pointLight position={[2, 2, 3]} intensity={1.1} color="#3fd8ff" />
+        <pointLight position={[-2, -1.5, -2]} intensity={0.6} color="#8b7bff" />
+
+        <Suspense fallback={null}>
+          <Rig />
+        </Suspense>
+      </Canvas>
     </div>
   );
 }
+
+useGLTF.preload(MODEL_URL);

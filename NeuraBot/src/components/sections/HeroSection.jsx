@@ -1,7 +1,6 @@
 import ParticleField from "../ui/ParticleField";
 import HeroCore3D from "../ui/HeroCore3D";
 import { STATS } from "../../data/site";
-import botlogo from "../../../../imgs/logoname.png";
 
 export default function HeroSection() {
   return (
@@ -202,7 +201,7 @@ export default function HeroSection() {
 
           {/* Right: 3D core */}
           <div className="hero-core-wrap" style={{ animation: "fadeUp 0.8s 0.2s ease both" }}>
-            <HeroCore3D image={botlogo} imageAlt="Mascote Neura Bot" />
+            <HeroCore3D />
           </div>
         </div>
       </div>

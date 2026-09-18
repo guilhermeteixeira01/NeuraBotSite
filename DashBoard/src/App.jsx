@@ -13,8 +13,8 @@ import NotificationsPage from './pages/NotificationsPage';
 import DatabasePage from './pages/DatabasePage';
 import DiscordServerPage from './pages/DiscordServerPage';
 
-import { useDevToolsBlocker } from '../../NeuraBot/src/hooks/useDevToolsBlocker';
-import BlockScreen from '../../NeuraBot/src/components/ui/BlockScreen';
+import { useDevToolsBlocker } from './hooks/useDevToolsBlocker';
+import BlockScreen from './components/ui/BlockScreen';
 
 export default function App() {
   const [blocked, setBlocked] = useState(false);
@@ -24,9 +24,6 @@ export default function App() {
 
   useDevToolsBlocker({ onOpen: handleOpen, onClose: handleClose });
 
-  // Enquanto DevTools estiver aberto, mostra tela de bloqueio
-  if (blocked) return <BlockScreen />;
-
   const { user, isAdmin } = useAuth();
   const { toast } = useToast();
 
@@ -35,6 +32,11 @@ export default function App() {
   const [refreshTrigger, setRefreshTrigger] = useState(0);
   const [subsFilter, setSubsFilter] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // Enquanto DevTools estiver aberto, mostra tela de bloqueio.
+  // Fica depois de todos os hooks acima pra nunca pular chamada de hook
+  // entre renders (Regras de Hooks do React).
+  if (blocked) return <BlockScreen />;
 
   // Loading enquanto Firebase verifica auth + isAdmin
   if (user === undefined || (user && isAdmin === undefined)) {
