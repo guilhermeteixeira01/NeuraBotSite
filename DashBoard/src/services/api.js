@@ -21,12 +21,6 @@
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'https://sql.neurabot.com.br';
 const API_SECRET = import.meta.env.VITE_API_SECRET ?? '@!@Neurabot32147';
-
-// Debug em desenvolvimento — mostra no console qual URL está sendo usada
-if (import.meta.env.DEV) {
-  console.log('[api] API_URL →', API_URL);
-}
-
 // ── Server API (server.js : 3301, exposto como API_URL) ──────
 export async function api(path, method = 'GET', body = null) {
   const url = API_URL + path;

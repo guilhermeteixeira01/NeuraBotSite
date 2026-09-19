@@ -1214,7 +1214,7 @@ export default function SubscriptionsPage({
                       </button>
                     </>
                   ) : (
-                    Number(s.price || 0) > 0 && (
+                    Number(s.price || 0) > 0 && s.paymentStatus !== 'paid' && (
                       <button className="btn btn-sm" onClick={() => setBilling(s)} style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                         <IconCreditCard size={13} /> Gerar Cobrança
                       </button>
