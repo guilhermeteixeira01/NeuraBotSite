@@ -1,9 +1,51 @@
 // src/components/LoginScreen.jsx
 import { useState } from 'react';
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithPopup, OAuthProvider, updateProfile } from 'firebase/auth';
 import { auth, googleProvider, microsoftProvider } from '../services/firebase';
+import { api } from '../services/api';
 import './LoginScreen.css';
 import botlogo from "../../../imgs/logoo.png";
+
+// O Firebase Auth não traz a foto de perfil de contas Microsoft automaticamente
+// (só vem pra contas Google). Busca na Microsoft Graph API usando o access
+// token que o login devolve, salva no nosso próprio backend (o photoURL do
+// Firebase Auth tem limite de ~2048 caracteres — não cabe a imagem em base64
+// direto) e aplica a URL curta resultante no user.photoURL.
+async function applyMicrosoftPhoto(result) {
+  try {
+    const credential = OAuthProvider.credentialFromResult(result);
+    const accessToken = credential?.accessToken;
+    if (!accessToken) return;
+
+    const graphRes = await fetch('https://graph.microsoft.com/v1.0/me/photos/96x96/$value', {
+      headers: { Authorization: `Bearer ${accessToken}` },
+    });
+    // 404 = conta sem foto configurada (comum em conta pessoal Microsoft) — segue sem erro
+    if (!graphRes.ok) return;
+
+    const blob = await graphRes.blob();
+    const imageBase64 = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      // reader.result vem como "data:image/jpeg;base64,AAAA..." — manda só a parte depois da vírgula
+      reader.onloadend = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+
+    const { url } = await api('/api/avatar', 'POST', {
+      uid: result.user.uid,
+      imageBase64,
+      contentType: blob.type || 'image/jpeg',
+    });
+
+    const API_URL = import.meta.env.VITE_API_URL ?? 'https://sql.neurabot.com.br';
+    await updateProfile(result.user, { photoURL: `${API_URL}${url}` });
+    // Força o onAuthStateChanged a disparar de novo com o photoURL já atualizado
+    await result.user.reload();
+  } catch (_) {
+    // Falha ao buscar/salvar a foto não deve travar o login
+  }
+}
 
 export default function LoginScreen() {
   const [error, setError] = useState('');
@@ -26,7 +68,8 @@ export default function LoginScreen() {
     setError('');
     setLoadingMicrosoft(true);
     try {
-      await signInWithPopup(auth, microsoftProvider);
+      const result = await signInWithPopup(auth, microsoftProvider);
+      await applyMicrosoftPhoto(result);
     } catch (e) {
       setError('Erro ao entrar: ' + (e.message || 'tente novamente'));
     } finally {

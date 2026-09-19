@@ -16,4 +16,6 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 export const microsoftProvider = new OAuthProvider('microsoft.com');
+// User.Read é necessário pra buscar a foto de perfil depois, via Microsoft Graph API
+microsoftProvider.addScope('User.Read');
 export const db = getFirestore(app);
