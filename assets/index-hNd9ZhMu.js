@@ -80,9 +80,17 @@ Please change the parent <Route path="${m}"> to <Route path="${m==="/"?"*":`${m}
           .footer-grid {
             grid-template-columns: 1fr 1fr !important;
             gap: 32px 20px !important;
+            justify-items: center;
+            text-align: center;
           }
           .footer-brand {
             grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .footer-col-links {
+            text-align: center !important;
           }
           .footer-bottom {
             flex-direction: column;
