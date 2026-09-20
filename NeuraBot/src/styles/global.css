@@ -345,6 +345,13 @@ body {
     transform: none !important;
     filter: none !important;
   }
+
+  /* O sticky (seção "gruda" na tela enquanto a próxima sobe por cima) é o
+     que dava a sensação de scroll estranho/grudento em touch — desliga
+     também, vira rolagem normal, uma seção depois da outra. */
+  .stack-section {
+    position: static;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
