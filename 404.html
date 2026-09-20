@@ -12,10 +12,10 @@
   <link rel="icon" type="image/png" sizes="512x512" href="../imgs/android-chrome-512x512.png">
   <title>Erro — Neurabot</title>
   <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Sora:wght@300;400;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Sora:wght@300;400;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
     *,
     *::before,
@@ -35,9 +35,9 @@
     }
 
     body {
-      background: #07070f;
+      background: #0b0c0f;
       color: #fff;
-      font-family: 'Sora', 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', system-ui, sans-serif;
       overflow-x: hidden;
       min-height: 100vh;
       display: flex;
@@ -49,11 +49,11 @@
     }
 
     ::-webkit-scrollbar-track {
-      background: #0a0a14
+      background: #121317
     }
 
     ::-webkit-scrollbar-thumb {
-      background: #00d4ff44;
+      background: #3498db44;
       border-radius: 3px
     }
 
@@ -88,17 +88,17 @@
     }
 
     .glow-orb-1 {
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(circle, #00d4ff18, transparent 70%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, #3498db40, transparent 70%);
       top: -100px;
       left: -100px
     }
 
     .glow-orb-2 {
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, #0088ff12, transparent 70%);
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, #3ddc8438, transparent 70%);
       bottom: -60px;
       right: -60px
     }
@@ -109,7 +109,7 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: linear-gradient(90deg, transparent, #00d4ff33, transparent);
+      background: linear-gradient(90deg, transparent, #3498db33, transparent);
       z-index: 1;
       pointer-events: none;
       animation: scan 6s linear infinite
@@ -141,11 +141,11 @@
       align-items: center;
       justify-content: space-between;
       padding: 20px 40px;
-      border-bottom: 1px solid #00d4ff0f
+      border-bottom: 1px solid #3498db0f
     }
 
     .nav-logo {
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Chakra Petch', sans-serif;
       font-weight: 900;
       font-size: 20px;
       letter-spacing: 2px;
@@ -154,7 +154,7 @@
     }
 
     .nav-logo span {
-      color: #00d4ff
+      color: #3498db
     }
 
     /* ── Main error section ── */
@@ -172,6 +172,8 @@
     .error-inner {
       max-width: 640px;
       width: 100%;
+      margin: 0 auto;
+      text-align: center;
       animation: fadeUp 0.7s ease both
     }
 
@@ -189,30 +191,32 @@
 
     /* ── Big code ── */
     .error-code {
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Chakra Petch', sans-serif;
       font-weight: 900;
       font-size: clamp(100px, 20vw, 180px);
       line-height: 1;
       letter-spacing: -4px;
-      background: linear-gradient(135deg, #00d4ff, #0088ff);
+      background: linear-gradient(135deg, #3498db, #1a73e8);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       position: relative;
-      display: inline-block
+      display: block;
+      width: 100%;
+      text-align: center
     }
 
     .error-code::after {
       content: attr(data-code);
       position: absolute;
       inset: 0;
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Chakra Petch', sans-serif;
       font-weight: 900;
       font-size: inherit;
       line-height: 1;
       letter-spacing: -4px;
       -webkit-text-fill-color: transparent;
-      background: linear-gradient(135deg, #00d4ff22, #0088ff11);
+      background: linear-gradient(135deg, #3498db22, #1a73e811);
       -webkit-background-clip: text;
       background-clip: text;
       filter: blur(20px);
@@ -225,13 +229,13 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #00d4ff0d;
-      border: 1px solid #00d4ff22;
+      background: #3498db0d;
+      border: 1px solid #3498db22;
       border-radius: 20px;
       padding: 6px 16px;
       font-size: 12px;
       font-weight: 600;
-      color: #00d4ff;
+      color: #3498db;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       margin-bottom: 24px
@@ -241,7 +245,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: #00d4ff;
+      background: #3498db;
       animation: blink 1.4s ease-in-out infinite
     }
 
@@ -259,7 +263,7 @@
 
     /* ── Title & desc ── */
     .error-title {
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Chakra Petch', sans-serif;
       font-weight: 700;
       font-size: clamp(22px, 5vw, 36px);
       color: #fff;
@@ -269,7 +273,7 @@
 
     .error-desc {
       font-size: 15px;
-      color: #8888aa;
+      color: #9a9ba3;
       line-height: 1.8;
       margin-bottom: 36px;
       max-width: 500px;
@@ -290,7 +294,7 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: linear-gradient(135deg, #00d4ff, #0088ff);
+      background: linear-gradient(135deg, #3498db, #1a73e8);
       color: #fff;
       border: none;
       border-radius: 8px;
@@ -298,7 +302,7 @@
       font-size: 15px;
       font-weight: 700;
       cursor: pointer;
-      font-family: 'Sora', sans-serif;
+      font-family: 'Segoe UI', system-ui, sans-serif;
       transition: all 0.2s;
       letter-spacing: 0.5px;
       text-decoration: none;
@@ -307,7 +311,7 @@
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px #00d4ff44
+      box-shadow: 0 8px 30px #3498db44
     }
 
     .btn-outline {
@@ -315,22 +319,22 @@
       align-items: center;
       gap: 8px;
       background: transparent;
-      color: #00d4ff;
-      border: 1px solid #00d4ff55;
+      color: #3498db;
+      border: 1px solid #3498db55;
       border-radius: 8px;
       padding: 13px 28px;
       font-size: 14px;
       font-weight: 600;
       cursor: pointer;
-      font-family: 'Sora', sans-serif;
+      font-family: 'Segoe UI', system-ui, sans-serif;
       transition: all 0.2s;
       text-decoration: none;
       text-align: center
     }
 
     .btn-outline:hover {
-      background: #00d4ff11;
-      border-color: #00d4ff
+      background: #3498db11;
+      border-color: #3498db
     }
 
     /* ── Decorative divider ── */
@@ -346,18 +350,18 @@
     .error-divider-line {
       flex: 1;
       height: 1px;
-      background: linear-gradient(90deg, transparent, #00d4ff55)
+      background: linear-gradient(90deg, transparent, #3498db55)
     }
 
     .error-divider-line.r {
-      background: linear-gradient(90deg, #00d4ff55, transparent)
+      background: linear-gradient(90deg, #3498db55, transparent)
     }
 
     .error-divider span {
       font-size: 11px;
-      color: #00d4ff;
+      color: #3498db;
       letter-spacing: 2px;
-      font-family: 'Orbitron', sans-serif;
+      font-family: 'Chakra Petch', sans-serif;
       white-space: nowrap
     }
 
@@ -371,7 +375,7 @@
     }
 
     .quick-link {
-      color: #8888aa;
+      color: #9a9ba3;
       text-decoration: none;
       font-size: 13px;
       transition: color .2s;
@@ -387,7 +391,7 @@
     }
 
     .quick-link:hover {
-      color: #00d4ff
+      color: #3498db
     }
 
     /* ── Footer ── */
@@ -395,7 +399,7 @@
       position: relative;
       z-index: 2;
       padding: 20px 40px;
-      border-top: 1px solid #00d4ff0f;
+      border-top: 1px solid #3498db0f;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -404,7 +408,7 @@
 
     .footer-copy {
       font-size: 12px;
-      color: #444466
+      color: #5c5d64
     }
 
     .footer-status {
@@ -412,14 +416,14 @@
       align-items: center;
       gap: 6px;
       font-size: 12px;
-      color: #444466
+      color: #5c5d64
     }
 
     .status-dot {
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: #ffe600
+      background: #3ddc84
     }
 
     /* ── Responsivo ── */
