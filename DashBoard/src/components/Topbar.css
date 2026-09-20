@@ -1,11 +1,12 @@
 /* src/components/Topbar.css */
-/* Design system: Space Grotesk + IBM Plex Mono + Sora · #05060a · #3fd8ff / #1a8fd1 */
+/* Design system: Chakra Petch + Segoe UI + JetBrains Mono · #0b0c0f · #3498db (blue) · #3ddc84 (green) · #ff7a1a (orange) */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 .topbar {
-  padding: 20px 28px;
-  border-bottom: 1px solid rgba(63, 216, 255, 0.08);
+  height: 76px;
+  padding: 0 28px;
+  border-bottom: 1px solid rgba(52, 152, 219, 0.08);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -15,22 +16,30 @@
   z-index: 10;
   gap: 12px;
   backdrop-filter: blur(12px);
+  box-sizing: border-box;
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
 }
 
 .topbar-left h1 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
   font-size: 16px;
   font-weight: 700;
   letter-spacing: 1px;
   color: #fff;
-  text-shadow: 0 0 16px rgba(63, 216, 255, 0.3);
+  text-shadow: 0 0 16px rgba(52, 152, 219, 0.3);
 }
 
 .topbar-left p {
   font-size: 12px;
-  color: #6b7690;
+  color: #9a9ba3;
   margin-top: 2px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 .topbar-right {
@@ -43,13 +52,12 @@
 /* ── Hamburger toggle (mobile only) ── */
 .menu-toggle {
   display: none;
-  margin-bottom: 10px;
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: rgba(63, 216, 255, 0.06);
-  border: 1px solid rgba(63, 216, 255, 0.15);
-  color: #3fd8ff;
+  background: rgba(52, 152, 219, 0.06);
+  border: 1px solid rgba(52, 152, 219, 0.15);
+  color: #3498db;
   cursor: pointer;
   align-items: center;
   justify-content: center;
@@ -58,8 +66,8 @@
 }
 
 .menu-toggle:hover {
-  background: rgba(63, 216, 255, 0.12);
-  box-shadow: 0 0 12px rgba(63, 216, 255, 0.15);
+  background: rgba(52, 152, 219, 0.12);
+  box-shadow: 0 0 12px rgba(52, 152, 219, 0.15);
 }
 
 @media (max-width: 768px) {
@@ -68,7 +76,8 @@
   }
 
   .topbar {
-    padding: 14px 16px;
+    height: 60px;
+    padding: 0 16px;
   }
 
   .topbar-left h1 {

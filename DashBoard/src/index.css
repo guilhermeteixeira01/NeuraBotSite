@@ -35,7 +35,13 @@
 
 body {
   font-family: var(--sans);
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse 55% 45% at 15% 8%, rgba(26, 115, 232, 0.16) 0%, transparent 62%),
+    radial-gradient(ellipse 55% 45% at 85% 100%, rgba(61, 220, 132, 0.14) 0%, transparent 62%),
+    repeating-linear-gradient(0deg, transparent, transparent 42px, rgba(255, 255, 255, 0.012) 42px, rgba(255, 255, 255, 0.012) 43px),
+    repeating-linear-gradient(90deg, transparent, transparent 42px, rgba(255, 255, 255, 0.012) 42px, rgba(255, 255, 255, 0.012) 43px),
+    var(--bg);
+  background-attachment: fixed;
   color: var(--text);
   min-height: 100vh;
   overflow-x: hidden;

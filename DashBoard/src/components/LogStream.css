@@ -1,13 +1,13 @@
 /* src/components/LogStream.css */
-/* Design system: Space Grotesk + IBM Plex Mono + Sora · #05060a · #3fd8ff / #1a8fd1 */
+/* Design system: Chakra Petch + Segoe UI + JetBrains Mono · #0b0c0f · #3498db (blue) · #3ddc84 (green) · #ff7a1a (orange) */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 /* ── Painel externo ── */
 .log-panel {
   position: relative;
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(63, 216, 255, 0.1);
+  border: 1px solid rgba(52, 152, 219, 0.1);
   border-radius: 10px;
   padding: 20px;
   backdrop-filter: blur(10px);
@@ -19,7 +19,7 @@
   position: absolute;
   width: 12px;
   height: 12px;
-  border-color: #3fd8ff;
+  border-color: #3498db;
   opacity: 0.5;
   pointer-events: none;
 }
@@ -48,12 +48,12 @@
 }
 
 .log-header h3 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.5px;
-  color: #3fd8ff;
-  text-shadow: 0 0 10px rgba(63, 216, 255, 0.4);
+  color: #3498db;
+  text-shadow: 0 0 10px rgba(52, 152, 219, 0.4);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -61,11 +61,11 @@
 
 /* ── Stream container ── */
 .log-stream {
-  background: #05060a;
-  border: 1px solid rgba(63, 216, 255, 0.08);
+  background: #0b0c0f;
+  border: 1px solid rgba(52, 152, 219, 0.08);
   border-radius: 8px;
   padding: 10px 6px;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
   font-size: 11.5px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -83,7 +83,7 @@
 }
 
 .log-stream::-webkit-scrollbar-thumb {
-  background: rgba(63, 216, 255, 0.15);
+  background: rgba(52, 152, 219, 0.15);
   border-radius: 2px;
 }
 
@@ -100,12 +100,12 @@
 }
 
 .log-line:hover {
-  background: rgba(63, 216, 255, 0.04) !important;
+  background: rgba(52, 152, 219, 0.04) !important;
 }
 
 /* timestamp */
 .log-time {
-  color: rgba(63, 216, 255, 0.35);
+  color: rgba(52, 152, 219, 0.35);
   flex-shrink: 0;
   font-size: 10.5px;
   min-width: 68px;
@@ -124,7 +124,7 @@
 /* nome do app */
 .log-app {
   flex-shrink: 0;
-  color: #3fd8ff;
+  color: #3498db;
   font-size: 11px;
   max-width: 110px;
   overflow: hidden;
@@ -139,7 +139,7 @@
   min-width: 0;
   word-break: break-word;
   white-space: pre-wrap;
-  color: #cccce0;
+  color: #f1f1f1;
 }
 
 /* ── Realce por nível ── */
@@ -148,15 +148,15 @@
 }
 
 .log-line-warn {
-  border-left: 2px solid rgba(250, 166, 26, 0.5);
+  border-left: 2px solid rgba(255, 122, 26, 0.5);
 }
 
 .log-line-success {
-  border-left: 2px solid rgba(63, 216, 255, 0.4);
+  border-left: 2px solid rgba(61, 220, 132, 0.4);
 }
 
 .log-line-debug {
-  border-left: 2px solid rgba(63, 216, 255, 0.07);
+  border-left: 2px solid rgba(52, 152, 219, 0.07);
 }
 
 .log-line-info {
@@ -171,9 +171,9 @@
   justify-content: center;
   gap: 8px;
   height: 100%;
-  color: #6b7690;
+  color: #9a9ba3;
   font-size: 12px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 .log-empty-icon {

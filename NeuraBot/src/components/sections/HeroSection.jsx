@@ -86,12 +86,13 @@ export default function HeroSection() {
           position: "absolute",
           inset: 0,
           backgroundImage:
-            "linear-gradient(rgba(63,216,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(63,216,255,0.05) 1px,transparent 1px)",
+            "linear-gradient(rgba(52,152,219,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(52,152,219,0.05) 1px,transparent 1px)",
           backgroundSize: "56px 56px",
           animation: "grid-fade 1s forwards",
         }}
       />
 
+      {/* Glow azul — atrás do cérebro, lado direito */}
       <div
         aria-hidden="true"
         style={{
@@ -102,7 +103,23 @@ export default function HeroSection() {
           width: 760,
           height: 760,
           borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(63,216,255,0.07) 0%, transparent 65%)",
+          background: "radial-gradient(circle, rgba(52,152,219,0.09) 0%, transparent 65%)",
+          pointerEvents: "none",
+        }}
+      />
+
+      {/* Glow verde — lado esquerdo, atrás do texto */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: "65%",
+          left: "12%",
+          transform: "translate(-50%,-50%)",
+          width: 620,
+          height: 620,
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(61,220,132,0.07) 0%, transparent 65%)",
           pointerEvents: "none",
         }}
       />

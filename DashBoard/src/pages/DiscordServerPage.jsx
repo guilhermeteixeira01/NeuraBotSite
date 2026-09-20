@@ -230,6 +230,10 @@ export default function DiscordServerPage() {
     const [channelSearch, setChannelSearch] = useState('');
     const [sendingMsg, setSendingMsg] = useState(false);
 
+    // ── Atribuir/remover cargo de um membro ────────────────
+    const [rolePickerMember, setRolePickerMember] = useState(null);
+    const [togglingRoleId, setTogglingRoleId] = useState(null);
+
     // ── Carrega todas as assinaturas do cliente ────────────
     const loadSubs = useCallback(async () => {
         if (user === undefined || subscriptionLoading) return;
@@ -358,6 +362,48 @@ export default function DiscordServerPage() {
             toast(`Erro ao enviar: ${e.message}`, 'error');
         } finally {
             setSendingMsg(false);
+        }
+    }
+
+    // ── Dar/tirar cargo de um membro ────────────────────────
+    async function toggleRole(role) {
+        if (!rolePickerMember) return;
+        const hasRole = rolePickerMember.roles.some(r => r.id === role.id);
+        const action = hasRole ? 'remove' : 'add';
+
+        setTogglingRoleId(role.id);
+        try {
+            await api('/api/discord-role', 'POST', {
+                guildId: selectedGuildId,
+                userId: rolePickerMember.id,
+                roleId: role.id,
+                roleName: role.name,
+                action,
+            });
+
+            // Atualiza a lista local na hora — o bot ainda vai processar de
+            // verdade em até alguns segundos (é enfileirado, não instantâneo)
+            const newRoles = hasRole
+                ? rolePickerMember.roles.filter(r => r.id !== role.id)
+                : [...rolePickerMember.roles, { id: role.id, name: role.name }];
+
+            setRolePickerMember({ ...rolePickerMember, roles: newRoles });
+            setDiscordData(prev => ({
+                ...prev,
+                members: (prev.members || []).map(m =>
+                    m.id === rolePickerMember.id ? { ...m, roles: newRoles } : m
+                ),
+            }));
+
+            toast(
+                `Cargo "${role.name}" ${hasRole ? 'removido de' : 'adicionado a'} ${rolePickerMember.displayName} — aplicando no Discord...`,
+                'success'
+            );
+            addLog('discord-role', 'info', `${action === 'remove' ? 'Removeu' : 'Adicionou'} cargo ${role.name} de ${rolePickerMember.username}`);
+        } catch (e) {
+            toast(`Erro ao alterar cargo: ${e.message}`, 'error');
+        } finally {
+            setTogglingRoleId(null);
         }
     }
 
@@ -592,7 +638,13 @@ export default function DiscordServerPage() {
                                     filteredMembers.length === 0
                                         ? <p className="dc-empty">Nenhum membro encontrado.</p>
                                         : filteredMembers.map(m => (
-                                            <div key={m.id} className="dc-item">
+                                            <div
+                                                key={m.id}
+                                                className="dc-item"
+                                                onClick={() => setRolePickerMember(m)}
+                                                style={{ cursor: 'pointer' }}
+                                                title="Clique para gerenciar cargos"
+                                            >
                                                 <img
                                                     src={m.avatar}
                                                     alt=""
@@ -634,6 +686,76 @@ export default function DiscordServerPage() {
 
                             </div>
                         )}
+                    </div>
+                </div>
+            )}
+
+            {/* ── Modal: gerenciar cargos de um membro ──────────── */}
+            {rolePickerMember && (
+                <div className="modal-overlay" onClick={() => setRolePickerMember(null)}>
+                    <div className="modal-card" onClick={e => e.stopPropagation()}>
+                        <h3 style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                            <img
+                                src={rolePickerMember.avatar}
+                                alt=""
+                                onError={e => { e.target.src = 'https://cdn.discordapp.com/embed/avatars/0.png'; }}
+                                style={{ width: 32, height: 32, borderRadius: '50%', flexShrink: 0 }}
+                            />
+                            <span>
+                                {rolePickerMember.displayName}
+                                <div style={{ fontSize: 12, fontWeight: 400, color: 'var(--text3, #8888aa)' }}>
+                                    @{rolePickerMember.username}
+                                </div>
+                            </span>
+                        </h3>
+
+                        <div className="form-group">
+                            <label>Cargos ({(discordData?.roles || []).length})</label>
+                            <div style={{ display: 'flex', flexDirection: 'column', gap: 6, maxHeight: 320, overflowY: 'auto' }}>
+                                {(discordData?.roles || []).map(role => {
+                                    const hasRole = rolePickerMember.roles.some(r => r.id === role.id);
+                                    const isLoading = togglingRoleId === role.id;
+                                    return (
+                                        <button
+                                            key={role.id}
+                                            className="btn btn-sm"
+                                            disabled={isLoading}
+                                            onClick={() => toggleRole(role)}
+                                            style={{
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'space-between',
+                                                width: '100%',
+                                                background: hasRole ? 'rgba(0, 212, 255, 0.1)' : undefined,
+                                                borderColor: hasRole ? 'rgba(0, 212, 255, 0.35)' : undefined,
+                                            }}
+                                        >
+                                            <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                                                <span
+                                                    className="dc-role-dot"
+                                                    style={{ background: role.color === '#000000' ? '#555' : role.color }}
+                                                />
+                                                {role.name}
+                                            </span>
+                                            {isLoading ? (
+                                                <span className="spin" style={{ width: 14, height: 14 }} />
+                                            ) : (
+                                                <span style={{ fontSize: 11, opacity: 0.7 }}>
+                                                    {hasRole ? 'Remover' : 'Adicionar'}
+                                                </span>
+                                            )}
+                                        </button>
+                                    );
+                                })}
+                                {(discordData?.roles || []).length === 0 && (
+                                    <p className="dc-empty">Nenhum cargo disponível nesse servidor.</p>
+                                )}
+                            </div>
+                        </div>
+
+                        <div className="form-group" style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
+                            <button className="btn" onClick={() => setRolePickerMember(null)}>Fechar</button>
+                        </div>
                     </div>
                 </div>
             )}

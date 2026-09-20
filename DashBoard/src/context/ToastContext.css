@@ -1,5 +1,5 @@
 /* src/context/ToastContext.css */
-/* Design system: Orbitron + Sora · #07070f · #00d4ff / #0088ff */
+/* Design system: Chakra Petch + Segoe UI · #0b0c0f · #3498db (blue) · #3ddc84 (green) · #ff7a1a (orange) */
 
 #toasts {
   position: fixed;
@@ -16,7 +16,7 @@
   border-radius: 10px;
   font-size: 13px;
   font-weight: 500;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   animation: slideIn 0.2s ease;
   max-width: 320px;
   border: 1px solid;
@@ -25,10 +25,10 @@
 }
 
 .toast-success {
-  background: rgba(0, 212, 255, 0.08);
-  color: #00d4ff;
-  border-color: rgba(0, 212, 255, 0.25);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(0, 212, 255, 0.08);
+  background: rgba(61, 220, 132, 0.08);
+  color: #3ddc84;
+  border-color: rgba(61, 220, 132, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(61, 220, 132, 0.08);
 }
 
 .toast-error {
@@ -39,10 +39,10 @@
 }
 
 .toast-info {
-  background: rgba(0, 136, 255, 0.1);
-  color: #0088ff;
-  border-color: rgba(0, 136, 255, 0.25);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(0, 136, 255, 0.08);
+  background: rgba(52, 152, 219, 0.1);
+  color: #3498db;
+  border-color: rgba(52, 152, 219, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 16px rgba(52, 152, 219, 0.08);
 }
 
 @keyframes slideIn {

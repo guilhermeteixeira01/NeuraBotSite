@@ -4,8 +4,6 @@ import Scanline from "./components/ui/Scanline";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import HomePage from "./pages/HomePage";
-import NotFoundPage from "./pages/NotFoundPage";
-import { useState, useCallback } from 'react';
 
 function MainLayout() {
 
@@ -24,16 +22,15 @@ export default function App() {
   return (
     <BrowserRouter basename="/">
       <div style={{
-        background: "#05060a",
-        color: "#eef2f8",
+        background: "#0b0c0f",
+        color: "#f1f1f1",
         minHeight: "100vh",
-        fontFamily: "'Sora', 'Segoe UI', sans-serif",
+        fontFamily: "'Segoe UI', system-ui, sans-serif",
         overflowX: "hidden",
       }}>
         <Scanline />
         <Routes>
           <Route path="/" element={<MainLayout />} />
-          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
     </BrowserRouter>

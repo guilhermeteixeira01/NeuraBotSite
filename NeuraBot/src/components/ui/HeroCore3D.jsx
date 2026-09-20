@@ -105,6 +105,9 @@ function Rig() {
   const spinRef = useRef(null);
   const autoSpin = useRef(0);
 
+  // Giro contínuo em torno do vertical — nessa hierarquia (roll fixo por
+  // dentro, spin puro por fora) o tronco cerebral fica reto pra baixo em
+  // QUALQUER ângulo do giro, então não tem "ângulo ruim" pra evitar.
   useFrame((_, delta) => {
     autoSpin.current += delta * 0.12;
     if (spinRef.current) spinRef.current.rotation.y = autoSpin.current;
@@ -112,9 +115,10 @@ function Rig() {
 
   return (
     <group ref={spinRef}>
-      {/* Pose fixa de repouso: de perfil, "em pé", tronco cerebral pra baixo. Nunca muda. */}
+      {/* Pose fixa de repouso: perfil clássico — lobo frontal arredondado
+          à esquerda, tronco cerebral/medula reto pra baixo. Nunca muda. */}
       <group rotation={[0, 0, -Math.PI * (70 / 180)]}>
-        <group rotation={[-Math.PI * (25 / 180), -Math.PI / 2, 0]}>
+        <group rotation={[0, -Math.PI / 2, 0]}>
           <group scale={0.75}>
             <BrainMesh />
           </group>

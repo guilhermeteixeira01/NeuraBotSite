@@ -42,6 +42,15 @@ export default function StackSection({ children, zIndex = 1, plain = false }) {
       const el = sectionRef.current;
       const inner = scaleRef.current;
       if (!el || !inner) return;
+
+      // No mobile o efeito de "afastar" fica desligado — não faz sentido
+      // nessa largura de tela e só consome ciclo de scroll à toa.
+      if (window.innerWidth <= 768) {
+        inner.style.transform = "";
+        inner.style.filter = "";
+        return;
+      }
+
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight || 1;
       // 0 = ainda não está sendo coberta · 1 = totalmente coberta pela próxima

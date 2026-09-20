@@ -1,9 +1,9 @@
 /* src/pages/NotificationsPage.css */
-/* Design system: Orbitron + Sora · #07070f · #00d4ff / #0088ff */
+/* Design system: Chakra Petch + Segoe UI · #0b0c0f · #3498db (blue) · #3ddc84 (green) · #ff7a1a (orange) */
 
 .broadcast-box {
   background: rgba(10, 10, 22, 0.92);
-  border: 1px solid rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(52, 152, 219, 0.1);
   border-radius: 18px;
   padding: 20px;
   /* backdrop-filter removido: causa artefatos visuais (linhas/glitch)
@@ -16,17 +16,17 @@
 }
 
 .broadcast-box:hover {
-  border-color: rgba(0, 212, 255, 0.18);
+  border-color: rgba(52, 152, 219, 0.18);
 }
 
 .broadcast-box h3 {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.8px;
   margin-bottom: 14px;
   color: #fff;
-  text-shadow: 0 0 12px rgba(0, 212, 255, 0.25);
+  text-shadow: 0 0 12px rgba(52, 152, 219, 0.25);
 }
 
 /* ── Textarea ── */
@@ -34,11 +34,11 @@
   width: 100%;
   min-height: 110px;
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(52, 152, 219, 0.1);
   border-radius: 12px;
   padding: 12px 14px;
   color: #fff;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   font-size: 13px;
   resize: vertical;
   outline: none;
@@ -47,12 +47,12 @@
 }
 
 .txt:focus {
-  border-color: rgba(0, 212, 255, 0.45);
-  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+  border-color: rgba(52, 152, 219, 0.45);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
 .txt::placeholder {
-  color: #8888aa;
+  color: #9a9ba3;
 }
 
 /* ── Field input ── */
@@ -60,23 +60,23 @@
   flex: 1;
   min-width: 0;
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(52, 152, 219, 0.1);
   border-radius: 12px;
   padding: 11px 14px;
   color: #fff;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   font-size: 13px;
   outline: none;
   transition: border-color 0.15s, box-shadow 0.15s;
 }
 
 .field-input:focus {
-  border-color: rgba(0, 212, 255, 0.45);
-  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+  border-color: rgba(52, 152, 219, 0.45);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
 .field-input::placeholder {
-  color: #8888aa;
+  color: #9a9ba3;
 }
 
 /* ── Select de servidor ── */
@@ -88,11 +88,11 @@
 .notif-select {
   width: 100%;
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(0, 212, 255, 0.12);
+  border: 1px solid rgba(52, 152, 219, 0.12);
   border-radius: 12px;
   padding: 11px 14px;
   color: #fff;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   font-size: 13px;
   outline: none;
   cursor: pointer;
@@ -102,12 +102,12 @@
 }
 
 .notif-select:focus {
-  border-color: rgba(0, 212, 255, 0.45);
-  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+  border-color: rgba(52, 152, 219, 0.45);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
 .notif-select option {
-  background: #0a0a14;
+  background: #121317;
   color: #fff;
 }
 
@@ -117,17 +117,17 @@
   gap: 16px;
   flex-wrap: wrap;
   font-size: 12px;
-  color: #8888aa;
-  font-family: 'Sora', monospace;
-  background: rgba(0, 212, 255, 0.04);
-  border: 1px solid rgba(0, 212, 255, 0.08);
+  color: #9a9ba3;
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
+  background: rgba(52, 152, 219, 0.04);
+  border: 1px solid rgba(52, 152, 219, 0.08);
   border-radius: 10px;
   padding: 8px 12px;
   margin-bottom: 4px;
 }
 
 .notif-meta strong {
-  color: rgba(0, 212, 255, 0.7);
+  color: rgba(52, 152, 219, 0.7);
 }
 
 /* ══════════════════════════════════════
@@ -146,8 +146,8 @@
 
 .dc-timestamp {
   font-size: 11px;
-  color: var(--text3, #8888aa);
-  font-family: 'Sora', monospace;
+  color: var(--text3, #9a9ba3);
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
 }
 
 /* Resumo 4 stats */
@@ -161,8 +161,8 @@
 .dc-stat {
   flex: 1;
   min-width: 64px;
-  background: rgba(0, 212, 255, 0.05);
-  border: 1px solid rgba(0, 212, 255, 0.1);
+  background: rgba(52, 152, 219, 0.05);
+  border: 1px solid rgba(52, 152, 219, 0.1);
   border-radius: 12px;
   padding: 10px 8px;
   text-align: center;
@@ -170,17 +170,17 @@
 
 .dc-stat-val {
   display: block;
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
   font-size: 18px;
   font-weight: 700;
-  color: #00d4ff;
+  color: #3498db;
 }
 
 .dc-stat-label {
   display: block;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   font-size: 10px;
-  color: #8888aa;
+  color: #9a9ba3;
   margin-top: 2px;
   letter-spacing: 0.5px;
 }
@@ -195,25 +195,25 @@
 
 .dc-tab {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(52, 152, 219, 0.1);
   border-radius: 8px;
   padding: 7px 14px;
-  color: #8888aa;
-  font-family: 'Sora', sans-serif;
+  color: #9a9ba3;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   font-size: 12px;
   cursor: pointer;
   transition: all 0.15s ease;
 }
 
 .dc-tab:hover {
-  border-color: rgba(0, 212, 255, 0.3);
+  border-color: rgba(52, 152, 219, 0.3);
   color: #ccc;
 }
 
 .dc-tab.active {
-  background: rgba(0, 212, 255, 0.1);
-  border-color: rgba(0, 212, 255, 0.4);
-  color: #00d4ff;
+  background: rgba(52, 152, 219, 0.1);
+  border-color: rgba(52, 152, 219, 0.4);
+  color: #3498db;
 }
 
 /* Campo de busca */
@@ -248,7 +248,7 @@
 }
 
 .dc-list::-webkit-scrollbar-thumb {
-  background: rgba(0, 212, 255, 0.2);
+  background: rgba(52, 152, 219, 0.2);
   border-radius: 4px;
 }
 
@@ -285,11 +285,11 @@
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: #8888aa;
+  color: #9a9ba3;
 }
 
 .dc-item:hover {
-  border-color: rgba(0, 212, 255, 0.15);
+  border-color: rgba(52, 152, 219, 0.15);
 }
 
 .dc-item-icon {
@@ -298,11 +298,11 @@
   min-width: 18px;
   text-align: center;
   flex-shrink: 0;
-  color: #8888aa;
+  color: #9a9ba3;
 }
 
 .dc-item-name {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   font-size: 13px;
   color: #e0e0f0;
   white-space: nowrap;
@@ -314,9 +314,9 @@
 }
 
 .dc-item-meta {
-  font-family: 'Sora', monospace;
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
   font-size: 11px;
-  color: #8888aa;
+  color: #9a9ba3;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -349,7 +349,7 @@
   height: 28px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid rgba(0, 212, 255, 0.15);
+  border: 1px solid rgba(52, 152, 219, 0.15);
   flex-shrink: 0;
 }
 
@@ -364,13 +364,13 @@
 }
 
 .dc-role-badge {
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   font-size: 10px;
   padding: 2px 7px;
   border-radius: 6px;
-  background: rgba(0, 212, 255, 0.08);
-  border: 1px solid rgba(0, 212, 255, 0.15);
-  color: rgba(0, 212, 255, 0.7);
+  background: rgba(52, 152, 219, 0.08);
+  border: 1px solid rgba(52, 152, 219, 0.15);
+  color: rgba(52, 152, 219, 0.7);
   white-space: nowrap;
 }
 
@@ -385,9 +385,9 @@
 /* Empty state */
 .dc-empty {
   font-size: 13px;
-  color: #8888aa;
+  color: #9a9ba3;
   margin-top: 10px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 /* ── Mobile ── */

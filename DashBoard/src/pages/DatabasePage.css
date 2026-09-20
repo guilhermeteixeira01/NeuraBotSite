@@ -1,5 +1,5 @@
 /* src/pages/DatabasePage.css */
-/* Design system: Orbitron + Sora · #07070f · #00d4ff / #0088ff */
+/* Design system: Chakra Petch + Segoe UI · #0b0c0f · #3498db (blue) · #3ddc84 (green) · #ff7a1a (orange) */
 
 .db-grid {
   display: grid;
@@ -10,7 +10,7 @@
 
 .db-card {
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(52, 152, 219, 0.1);
   border-radius: 14px;
   padding: 20px;
   backdrop-filter: blur(10px);
@@ -18,17 +18,17 @@
 }
 
 .db-card:hover {
-  border-color: rgba(0, 212, 255, 0.2);
-  box-shadow: 0 0 20px rgba(0, 212, 255, 0.05);
+  border-color: rgba(52, 152, 219, 0.2);
+  box-shadow: 0 0 20px rgba(52, 152, 219, 0.05);
 }
 
 .db-card h3 {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1px;
   margin-bottom: 14px;
-  color: rgba(0, 212, 255, 0.7);
+  color: rgba(52, 152, 219, 0.7);
   display: flex;
   align-items: center;
   gap: 6px;
@@ -40,10 +40,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 8px 0;
-  border-bottom: 1px solid rgba(0, 212, 255, 0.06);
+  border-bottom: 1px solid rgba(52, 152, 219, 0.06);
   font-size: 13px;
   gap: 8px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 .db-row:last-child {
@@ -51,7 +51,7 @@
 }
 
 .db-row-key {
-  color: #8888aa;
+  color: #9a9ba3;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -59,17 +59,17 @@
 }
 
 .db-row-val {
-  font-family: 'Sora', monospace;
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
   font-size: 12px;
   font-weight: 600;
   word-break: break-all;
   text-align: right;
-  color: #00d4ff;
+  color: #3498db;
 }
 
 .broadcast-box {
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(52, 152, 219, 0.1);
   border-radius: 14px;
   padding: 20px;
   backdrop-filter: blur(10px);

@@ -1,13 +1,13 @@
 /* src/components/Sidebar.css */
-/* Design system: Space Grotesk + IBM Plex Mono + Sora · #05060a · #3fd8ff / #1a8fd1 */
+/* Design system: Chakra Petch + Segoe UI + JetBrains Mono · #0b0c0f · #3498db (blue) · #3ddc84 (green) · #ff7a1a (orange) */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 .sidebar {
   width: var(--sidebar-width);
   flex-shrink: 0;
   background: rgba(5, 6, 10, 0.97);
-  border-right: 1px solid rgba(63, 216, 255, 0.1);
+  border-right: 1px solid rgba(52, 152, 219, 0.1);
   display: flex;
   flex-direction: column;
   position: sticky;
@@ -21,17 +21,20 @@
 /* ── Logo ── */
 .sidebar-logo {
   width: 100%;
-  padding: 13px;
-  border-bottom: 1px solid rgba(63, 216, 255, 0.08);
+  height: 76px;
+  padding: 0 13px;
+  border-bottom: 1px solid rgba(52, 152, 219, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
+  box-sizing: border-box;
 
   & img {
     width: 60%;
     height: auto;
     max-width: 180px;
+    max-height: 44px;
     object-fit: contain;
   }
 }
@@ -55,17 +58,17 @@ nav::-webkit-scrollbar-track {
 }
 
 nav::-webkit-scrollbar-thumb {
-  background: rgba(63, 216, 255, 0.15);
+  background: rgba(52, 152, 219, 0.15);
   border-radius: 2px;
 }
 
 .nav-label {
   font-size: 10px;
-  color: rgba(63, 216, 255, 0.5);
+  color: rgba(52, 152, 219, 0.5);
   letter-spacing: 0.12em;
   padding: 12px 8px 4px;
   text-transform: uppercase;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
 }
 
 .nav-item {
@@ -77,27 +80,27 @@ nav::-webkit-scrollbar-thumb {
   cursor: pointer;
   font-size: 13px;
   font-weight: 500;
-  color: #6b7690;
+  color: #9a9ba3;
   border: 1px solid transparent;
   background: none;
   width: 100%;
   text-align: left;
   transition: all 0.15s;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 .nav-item:hover {
-  background: rgba(63, 216, 255, 0.06);
+  background: rgba(52, 152, 219, 0.06);
   color: #fff;
-  border-color: rgba(63, 216, 255, 0.12);
+  border-color: rgba(52, 152, 219, 0.12);
 }
 
 .nav-item.active {
-  background: rgba(63, 216, 255, 0.1);
-  color: #3fd8ff;
-  border: 1px solid rgba(63, 216, 255, 0.22);
-  box-shadow: 0 0 12px rgba(63, 216, 255, 0.08);
-  text-shadow: 0 0 10px rgba(63, 216, 255, 0.5);
+  background: rgba(52, 152, 219, 0.1);
+  color: #3498db;
+  border: 1px solid rgba(52, 152, 219, 0.22);
+  box-shadow: 0 0 12px rgba(52, 152, 219, 0.08);
+  text-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
 }
 
 .nav-item .ni {
@@ -109,7 +112,7 @@ nav::-webkit-scrollbar-thumb {
 /* ── User section ── */
 .sidebar-user {
   padding: 16px;
-  border-top: 1px solid rgba(63, 216, 255, 0.08);
+  border-top: 1px solid rgba(52, 152, 219, 0.08);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -119,16 +122,16 @@ nav::-webkit-scrollbar-thumb {
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  border: 2px solid rgba(63, 216, 255, 0.25);
+  border: 2px solid rgba(52, 152, 219, 0.25);
   flex-shrink: 0;
-  background: linear-gradient(135deg, #3fd8ff, #1a8fd1);
+  background: linear-gradient(135deg, #3498db, #1a73e8);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 13px;
   font-weight: 600;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(63, 216, 255, 0.2);
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
 }
 
 .u-avatar img {
@@ -145,16 +148,16 @@ nav::-webkit-scrollbar-thumb {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 .u-email {
   font-size: 11px;
-  color: #6b7690;
+  color: #9a9ba3;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 .u-logout {
@@ -164,8 +167,8 @@ nav::-webkit-scrollbar-thumb {
   border-radius: 8px;
   cursor: pointer;
   background: none;
-  border: 1px solid rgba(63, 216, 255, 0.15);
-  color: #6b7690;
+  border: 1px solid rgba(52, 152, 219, 0.15);
+  color: #9a9ba3;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -190,9 +193,9 @@ nav::-webkit-scrollbar-thumb {
   width: 28px;
   height: 28px;
   border-radius: 7px;
-  border: 1px solid rgba(63, 216, 255, 0.15);
+  border: 1px solid rgba(52, 152, 219, 0.15);
   background: transparent;
-  color: #6b7690;
+  color: #9a9ba3;
   font-size: 13px;
   cursor: pointer;
   align-items: center;
@@ -202,8 +205,8 @@ nav::-webkit-scrollbar-thumb {
 }
 
 .sidebar-close:hover {
-  background: rgba(63, 216, 255, 0.08);
-  color: #3fd8ff;
+  background: rgba(52, 152, 219, 0.08);
+  color: #3498db;
 }
 
 /* ── Mobile ── */
@@ -224,7 +227,7 @@ nav::-webkit-scrollbar-thumb {
 
   .sidebar.sidebar--open {
     transform: translateX(0);
-    box-shadow: 4px 0 40px rgba(0, 0, 0, 0.7), 0 0 60px rgba(63, 216, 255, 0.05);
+    box-shadow: 4px 0 40px rgba(0, 0, 0, 0.7), 0 0 60px rgba(52, 152, 219, 0.05);
   }
 
   .sidebar-close {

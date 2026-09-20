@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Sora:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -10,15 +10,15 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background: #05060a;
-  color: #eef2f8;
-  font-family: 'Sora', 'Segoe UI', sans-serif;
+  background: #0b0c0f;
+  color: #f1f1f1;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   overflow-x: hidden;
 }
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0e1220; }
-::-webkit-scrollbar-thumb { background: #3fd8ff44; border-radius: 3px; }
+::-webkit-scrollbar-track { background: #16171c; }
+::-webkit-scrollbar-thumb { background: #3498db44; border-radius: 3px; }
 
 /* ── Animations ─────────────────────────────────────────────────────────── */
 @keyframes fadeUp {
@@ -64,7 +64,7 @@ body {
   left: 0;
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #3fd8ff66, transparent);
+  background: linear-gradient(90deg, transparent, #3498db66, transparent);
   pointer-events: none;
   z-index: 1;
   animation: scan 8s linear infinite;
@@ -76,7 +76,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  background: linear-gradient(135deg, #3fd8ff, #1a8fd1);
+  background: linear-gradient(135deg, #3498db, #1a73e8);
   color: #04141c;
   border: none;
   border-radius: 4px;
@@ -85,14 +85,14 @@ body {
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
   transition: all .2s;
   letter-spacing: .3px;
   text-decoration: none;
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px #3fd8ff44;
+  box-shadow: 0 8px 30px #3498db44;
 }
 
 .btn-outline {
@@ -101,19 +101,19 @@ body {
   justify-content: center;
   gap: 6px;
   background: transparent;
-  color: #3fd8ff;
-  border: 1px solid #3fd8ff55;
+  color: #3498db;
+  border: 1px solid #3498db55;
   border-radius: 4px;
   clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
   padding: 10px 18px;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
   transition: all .2s;
   text-decoration: none;
 }
-.btn-outline:hover { background: #3fd8ff11; border-color: #3fd8ff; }
+.btn-outline:hover { background: #3498db11; border-color: #3498db; }
 
 .btn-danger-outline {
   display: inline-flex;
@@ -121,26 +121,26 @@ body {
   justify-content: center;
   gap: 6px;
   background: transparent;
-  color: #ff4466;
-  border: 1px solid #ff446655;
+  color: #ff4d6a;
+  border: 1px solid #ff4d6a55;
   border-radius: 4px;
   clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
   padding: 10px 18px;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
   transition: all .2s;
 }
-.btn-danger-outline:hover { background: #ff446611; border-color: #ff4466; }
+.btn-danger-outline:hover { background: #ff4d6a11; border-color: #ff4d6a; }
 
 .btn-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #3fd8ff0d;
-  color: #3fd8ff;
-  border: 1px solid #3fd8ff33;
+  background: #3498db0d;
+  color: #3498db;
+  border: 1px solid #3498db33;
   border-radius: 8px;
   width: 42px;
   height: 42px;
@@ -148,13 +148,13 @@ body {
   cursor: pointer;
   transition: all .2s;
 }
-.btn-icon:hover { background: #3fd8ff22; border-color: #3fd8ff88; box-shadow: 0 0 14px #3fd8ff33; }
+.btn-icon:hover { background: #3498db22; border-color: #3498db88; box-shadow: 0 0 14px #3498db33; }
 
 /* ── Card & Labels ───────────────────────────────────────────────────────── */
 .nb-card {
   position: relative;
-  background: linear-gradient(160deg, #0b0e17 0%, #0e1220 100%);
-  border: 1px solid #3fd8ff18;
+  background: linear-gradient(160deg, #121317 0%, #16171c 100%);
+  border: 1px solid #3498db18;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -164,7 +164,7 @@ body {
   position: absolute;
   width: 10px;
   height: 10px;
-  border-color: #3fd8ff;
+  border-color: #3498db;
   opacity: .5;
   pointer-events: none;
   z-index: 1;
@@ -173,38 +173,38 @@ body {
 .nb-card::after { bottom: -1px; right: -1px; border-bottom: 1.5px solid; border-right: 1.5px solid; }
 
 .section-label {
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: #3fd8ff;
+  color: #3498db;
   margin-bottom: 10px;
   display: block;
 }
 
 /* ── Discord markdown ────────────────────────────────────────────────────── */
-.spoiler { background: #0b0e17; color: transparent; border-radius: 3px; padding: 0 3px; cursor: pointer; }
-.spoiler:hover { color: #eef2f8; }
+.spoiler { background: #121317; color: transparent; border-radius: 3px; padding: 0 3px; cursor: pointer; }
+.spoiler:hover { color: #f1f1f1; }
 .d-h1 { font-size: 2rem; font-weight: 700; }
 .d-h2 { font-size: 1.7rem; font-weight: 700; }
 .d-h3 { font-size: 1.33rem; font-weight: 700; }
 .d-h4 { font-size: 1rem; font-weight: 700; }
-blockquote { border-left: 3px solid #3fd8ff44; padding-left: 10px; margin: 4px 0; color: #6b7690; }
-pre { background: #0e1220; border: 1px solid #3fd8ff18; border-radius: 6px; padding: 10px; margin: 4px 0; overflow-x: auto; }
-code { background: #0e1220; border-radius: 4px; padding: 0 5px; font-family: 'IBM Plex Mono', monospace; font-size: .83em; color: #3fd8ff; }
+blockquote { border-left: 3px solid #3498db44; padding-left: 10px; margin: 4px 0; color: #9a9ba3; }
+pre { background: #16171c; border: 1px solid #3498db18; border-radius: 6px; padding: 10px; margin: 4px 0; overflow-x: auto; }
+code { background: #16171c; border-radius: 4px; padding: 0 5px; font-family: 'JetBrains Mono', 'Consolas', monospace; font-size: .83em; color: #3498db; }
 pre code { background: none; padding: 0; }
 p { margin: 0; display: inline; }
 
 /* ── Output textarea ─────────────────────────────────────────────────────── */
 .output-area {
   width: 100%;
-  background: #0e1220;
-  border: 1px solid #3fd8ff22;
-  color: #eef2f8;
+  background: #16171c;
+  border: 1px solid #3498db22;
+  color: #f1f1f1;
   padding: 10px 12px;
   border-radius: 8px;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
   font-size: 11px;
   resize: none;
   outline: none;
@@ -212,25 +212,25 @@ p { margin: 0; display: inline; }
   line-height: 1.6;
   transition: border-color .2s, box-shadow .2s;
 }
-.output-area:focus { border-color: #3fd8ff66; box-shadow: 0 0 0 3px #3fd8ff14; }
+.output-area:focus { border-color: #3498db66; box-shadow: 0 0 0 3px #3498db14; }
 
 /* ── Kbd ─────────────────────────────────────────────────────────────────── */
 kbd {
-  background: #0e1220;
-  border: 1px solid #3fd8ff33;
+  background: #16171c;
+  border: 1px solid #3498db33;
   border-radius: 4px;
   padding: 1px 5px;
-  font-family: 'IBM Plex Mono', monospace;
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
   font-size: 10px;
-  color: #3fd8ff;
+  color: #3498db;
 }
 
 /* ── Layout ──────────────────────────────────────────────────────────────── */
 .app-header {
   position: relative;
   z-index: 10;
-  background: linear-gradient(180deg, #0b0e17 0%, #05060a 100%);
-  border-bottom: 1px solid #3fd8ff1a;
+  background: linear-gradient(180deg, #121317 0%, #0b0c0f 100%);
+  border-bottom: 1px solid #3498db1a;
   padding: 0 28px;
   display: flex;
   align-items: center;
@@ -251,7 +251,7 @@ kbd {
   min-width: 340px;
   overflow-y: auto;
   background: rgba(5,6,10,.95);
-  border-right: 1px solid #3fd8ff14;
+  border-right: 1px solid #3498db14;
   flex-shrink: 0;
 }
 
@@ -293,7 +293,7 @@ kbd {
     width: 100%;
     min-width: unset;
     border-right: none;
-    border-bottom: 1px solid #3fd8ff14;
+    border-bottom: 1px solid #3498db14;
     display: none;
   }
 
@@ -314,8 +314,8 @@ kbd {
     position: sticky;
     top: 0;
     z-index: 20;
-    background: #0b0e17;
-    border-bottom: 1px solid #3fd8ff18;
+    background: #121317;
+    border-bottom: 1px solid #3498db18;
   }
 
   .mobile-tab {
@@ -323,8 +323,8 @@ kbd {
     padding: 12px;
     background: none;
     border: none;
-    color: #6b7690;
-    font-family: 'Space Grotesk', sans-serif;
+    color: #9a9ba3;
+    font-family: 'Chakra Petch', sans-serif;
     font-size: 9px;
     font-weight: 700;
     letter-spacing: .12em;
@@ -335,8 +335,8 @@ kbd {
   }
 
   .mobile-tab.active {
-    color: #3fd8ff;
-    border-bottom: 2px solid #3fd8ff;
+    color: #3498db;
+    border-bottom: 2px solid #3498db;
   }
 
   /* Ajustes internos do form no mobile */

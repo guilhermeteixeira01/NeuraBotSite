@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Sora:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 *,
 *::before,
@@ -18,9 +18,9 @@ html {
 }
 
 body {
-  background: #05060a;
-  color: #eef2f8;
-  font-family: 'Sora', 'Segoe UI', sans-serif;
+  background: #0b0c0f;
+  color: #f1f1f1;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   overflow-x: hidden;
 }
 
@@ -39,11 +39,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #05060a;
+  background: #0b0c0f;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3fd8ff55;
+  background: #3498db55;
   border-radius: 2px;
 }
 
@@ -52,28 +52,28 @@ body {
    ══════════════════════════════════════════ */
 :root {
   /* base */
-  --void: #05060a;
-  --panel: #0b0e17;
-  --panel-2: #0e1220;
-  --line: #1b2130;
-  --line-strong: #2a3244;
+  --void: #0b0c0f;
+  --panel: #121317;
+  --panel-2: #16171c;
+  --line: #232427;
+  --line-strong: #2e2f36;
 
   /* signal */
-  --cyan: #3fd8ff;
-  --cyan-soft: rgba(63, 216, 255, 0.5);
+  --cyan: #3498db;
+  --cyan-soft: rgba(52, 152, 219, 0.5);
   --violet: #8b7bff;
-  --green: #35e08a;
-  --amber: #f5a623;
+  --green: #3ddc84;
+  --amber: #ff7a1a;
 
   /* text */
-  --text: #eef2f8;
-  --text-dim: #6b7690;
-  --text-faint: #3d4457;
+  --text: #f1f1f1;
+  --text-dim: #9a9ba3;
+  --text-faint: #5c5d64;
 
   /* type */
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
-  --font-body: 'Sora', 'Segoe UI', sans-serif;
+  --font-display: 'Chakra Petch', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+  --font-body: 'Segoe UI', system-ui, sans-serif;
 }
 
 /* ══════════════════════════════════════════
@@ -84,7 +84,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, var(--cyan), #1a8fd1);
+  background: linear-gradient(135deg, var(--cyan), #1a73e8);
   color: #04141c;
   border: none;
   border-radius: 4px;
@@ -98,19 +98,19 @@ body {
   letter-spacing: 0.3px;
   text-decoration: none;
   text-align: center;
-  box-shadow: 0 0 0 1px rgba(63, 216, 255, 0.15), 0 8px 24px rgba(63, 216, 255, 0.18);
+  box-shadow: 0 0 0 1px rgba(52, 152, 219, 0.15), 0 8px 24px rgba(52, 152, 219, 0.18);
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 0 0 1px rgba(63, 216, 255, 0.3), 0 10px 32px rgba(63, 216, 255, 0.32);
+  box-shadow: 0 0 0 1px rgba(52, 152, 219, 0.3), 0 10px 32px rgba(52, 152, 219, 0.32);
 }
 
 .btn-outline {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(63, 216, 255, 0.04);
+  background: rgba(52, 152, 219, 0.04);
   color: var(--cyan);
   border: 1px solid var(--line-strong);
   border-radius: 4px;
@@ -127,7 +127,7 @@ body {
 }
 
 .btn-outline:hover {
-  background: rgba(63, 216, 255, 0.09);
+  background: rgba(52, 152, 219, 0.09);
   border-color: var(--cyan-soft);
 }
 
@@ -164,7 +164,7 @@ body {
 .glass-card:hover,
 .panel:hover {
   border-color: var(--cyan-soft);
-  box-shadow: 0 12px 40px rgba(63, 216, 255, 0.07);
+  box-shadow: 0 12px 40px rgba(52, 152, 219, 0.07);
 }
 
 /* corner brackets — add class "bracket" to any .panel */
@@ -334,6 +334,16 @@ body {
   .stack-scale {
     border-radius: 18px 18px 0 0;
     box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@media (max-width: 768px) {
+  .stack-scale {
+    /* Trava de segurança: o StackSection.jsx já para de calcular o
+       encolher/escurecer no mobile — isso só garante que nenhum
+       transform/filter antigo fique "grudado" via inline style. */
+    transform: none !important;
+    filter: none !important;
   }
 }
 

@@ -1,5 +1,5 @@
 /* src/pages/SubscriptionsPage.css */
-/* Design system: Orbitron + Sora · #07070f · #00d4ff / #0088ff */
+/* Design system: Chakra Petch + Segoe UI · #0b0c0f · #3498db (blue) · #3ddc84 (green) · #ff7a1a (orange) */
 
 .subs-grid {
   display: flex;
@@ -12,7 +12,7 @@
   position: relative;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(52, 152, 219, 0.1);
   border-radius: 18px;
   padding: 0;
   display: flex;
@@ -25,15 +25,15 @@
 
 .sub-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(0, 212, 255, 0.28);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 212, 255, 0.06);
+  border-color: rgba(52, 152, 219, 0.28);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(52, 152, 219, 0.06);
 }
 
 .sub-card::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top right, rgba(0, 212, 255, 0.06), transparent 40%);
+  background: radial-gradient(circle at top right, rgba(52, 152, 219, 0.06), transparent 40%);
   pointer-events: none;
   z-index: 0;
 }
@@ -59,8 +59,8 @@
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  border: 3px solid #07070f;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 212, 255, 0.15);
+  border: 3px solid #0b0c0f;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), 0 0 10px rgba(52, 152, 219, 0.15);
 }
 
 .sub-banner-wrap .fallback-avatar {
@@ -88,9 +88,9 @@
   height: 50px;
   border-radius: 14px;
   object-fit: cover;
-  background: rgba(0, 212, 255, 0.06);
-  border: 2px solid rgba(0, 212, 255, 0.15);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3), 0 0 12px rgba(0, 212, 255, 0.08);
+  background: rgba(52, 152, 219, 0.06);
+  border: 2px solid rgba(52, 152, 219, 0.15);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3), 0 0 12px rgba(52, 152, 219, 0.08);
   flex-shrink: 0;
 }
 
@@ -111,7 +111,7 @@
   font-size: 15px;
   font-weight: 700;
   color: #fff;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -120,23 +120,23 @@
 
 .sub-meta {
   font-size: 12px;
-  color: #8888aa;
+  color: #9a9ba3;
   margin-top: 6px;
-  font-family: 'Sora', monospace;
+  font-family: 'JetBrains Mono', 'Consolas', monospace;
   line-height: 1.5;
 }
 
 /* ── Status badges ── */
 .sub-status-paid {
-  background: rgba(0, 212, 255, 0.1);
-  color: #00d4ff;
-  border: 1px solid rgba(0, 212, 255, 0.25);
+  background: rgba(61, 220, 132, 0.1);
+  color: #3ddc84;
+  border: 1px solid rgba(61, 220, 132, 0.25);
 }
 
 .sub-status-pending {
-  background: rgba(250, 166, 26, 0.1);
-  color: #faa61a;
-  border: 1px solid rgba(250, 166, 26, 0.25);
+  background: rgba(255, 122, 26, 0.1);
+  color: #ff7a1a;
+  border: 1px solid rgba(255, 122, 26, 0.25);
 }
 
 .sub-status-expired {
@@ -153,27 +153,27 @@
   text-transform: uppercase;
   letter-spacing: 0.4px;
   white-space: nowrap;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 /* ── Botões ── */
 .btn {
-  border: 1px solid rgba(0, 212, 255, 0.15);
-  background: rgba(0, 212, 255, 0.05);
+  border: 1px solid rgba(52, 152, 219, 0.15);
+  background: rgba(52, 152, 219, 0.05);
   color: #fff;
   border-radius: 10px;
   padding: 9px 12px;
   transition: all 0.15s ease;
   cursor: pointer;
   font-size: 13px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   font-weight: 500;
 }
 
 .btn:hover {
-  background: rgba(0, 212, 255, 0.1);
-  border-color: rgba(0, 212, 255, 0.35);
-  box-shadow: 0 0 12px rgba(0, 212, 255, 0.1);
+  background: rgba(52, 152, 219, 0.1);
+  border-color: rgba(52, 152, 219, 0.35);
+  box-shadow: 0 0 12px rgba(52, 152, 219, 0.1);
   transform: translateY(-1px);
 }
 
@@ -209,11 +209,11 @@
 .modal-card {
   width: 100%;
   max-width: 440px;
-  background: rgba(10, 10, 20, 0.98);
-  border: 1px solid rgba(0, 212, 255, 0.15);
+  background: rgba(18, 19, 23, 0.98);
+  border: 1px solid rgba(52, 152, 219, 0.15);
   border-radius: 20px;
   padding: 24px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 212, 255, 0.05);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 40px rgba(52, 152, 219, 0.05);
   max-height: 90vh;
   overflow-y: auto;
 }
@@ -221,11 +221,11 @@
 .modal-card h3 {
   margin: 0 0 18px;
   font-size: 16px;
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
   font-weight: 700;
   letter-spacing: 0.8px;
   color: #fff;
-  text-shadow: 0 0 12px rgba(0, 212, 255, 0.3);
+  text-shadow: 0 0 12px rgba(52, 152, 219, 0.3);
 }
 
 /* ── Form ── */
@@ -238,14 +238,14 @@
 
 .form-group label {
   font-size: 13px;
-  color: #8888aa;
-  font-family: 'Sora', sans-serif;
+  color: #9a9ba3;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 .form-group input,
 .form-group select {
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(0, 212, 255, 0.12);
+  border: 1px solid rgba(52, 152, 219, 0.12);
   border-radius: 12px;
   padding: 12px;
   color: #fff;
@@ -253,14 +253,14 @@
   transition: all 0.15s ease;
   width: 100%;
   box-sizing: border-box;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   font-size: 13px;
 }
 
 .form-group input:focus,
 .form-group select:focus {
-  border-color: rgba(0, 212, 255, 0.45);
-  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+  border-color: rgba(52, 152, 219, 0.45);
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
 }
 
 .form-group select {
@@ -272,7 +272,7 @@
 }
 
 .form-group select option {
-  background: #0a0a14;
+  background: #121317;
   color: #fff;
 }
 
@@ -282,16 +282,16 @@
   align-items: center;
   gap: 10px;
   padding: 24px;
-  color: #8888aa;
+  color: #9a9ba3;
   font-size: 14px;
-  font-family: 'Sora', sans-serif;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
 .spin {
   width: 18px;
   height: 18px;
-  border: 2px solid rgba(0, 212, 255, 0.12);
-  border-top-color: #00d4ff;
+  border: 2px solid rgba(52, 152, 219, 0.12);
+  border-top-color: #3498db;
   border-radius: 50%;
   animation: spin 0.7s linear infinite;
   flex-shrink: 0;
